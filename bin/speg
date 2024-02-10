@@ -1,3 +1,3 @@
 #!/usr/bin/env ruby
-require 'speg'
-Speg::SpecGenerator.new.create_spec_files
+require 'spec_generator'
+SpecGenerator.new.create_spec_files

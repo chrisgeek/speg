@@ -7,14 +7,17 @@ Gem::Specification.new do |spec|
   spec.version = Speg::VERSION
   spec.authors = ['Opara Ifeanyi Christian']
   spec.email = ['chrisgeek29@gmail.com']
-
-  spec.summary = 'TODO: Write a short summary, because RubyGems requires one.'
-  spec.description = 'TODO: Write a longer description or delete this line.'
-  spec.homepage = 'TODO: Put your gem website or public repo URL here.'
+  spec.summary = 'Create spec files for Rspec'
+  spec.description = 'This gem creates spec files that were not created automatically with rspec, this is especially helpful if you have to generate multiple spec files'
+  # spec.homepage = 'Put your gem website or public repo URL here.'
   spec.license = 'MIT'
   spec.required_ruby_version = '>= 2.6.0'
+  spec.files       = Dir.glob('{lib,bin,spec}/**/*')
+  # spec.add_dependency 'rails', '~> 7.0'
+  spec.add_dependency 'railties', '~> 7.0'
+  spec.executables = ["speg"]
 
-#   spec.metadata['allowed_push_host'] = 'TODO: Set to your gem server https://example.com'
+#   spec.metadata[allowed_push_host'] = 'TODO: Set to your gem server https://example.com'
 
 #   spec.metadata['homepage_uri'] = spec.homepage
 #   spec.metadata['source_code_uri'] = 'TODO: Put your gems public repo URL here.'
@@ -22,18 +25,15 @@ Gem::Specification.new do |spec|
 
   # Specify which files should be added to the gem when it is released.
   # The `git ls-files -z` loads the files in the RubyGem that have been added into git.
-  spec.files = Dir.chdir(__dir__) do
-    `git ls-files -z`.split('\x0').reject do |f|
-      (File.expand_path(f) == __FILE__) ||
-        f.start_with?(*%w[bin/ test/ spec/ features/ .git .github appveyor Gemfile])
-    end
-  end
-  spec.bindir = 'exe'
-  spec.executables = spec.files.grep(%r{\Aexe/}) { |f| File.basename(f) }
-  spec.require_paths = ['lib']
-
-  # Uncomment to register a new dependency of your gem
-  # spec.add_dependency 'example-gem', '~> 1.0'
+  # spec.files = Dir.chdir(__dir__) do
+  #   `git ls-files -z`.split('\x0').reject do |f|
+  #     (File.expand_path(f) == __FILE__) ||
+  #       f.start_with?(*%w[bin/ test/ spec/ features/ .git .github appveyor Gemfile])
+  #   end
+  # end
+  # spec.bindir = 'exe'
+  # spec.executables = spec.files.grep(%r{\Aexe/}) { |f| File.basename(f) }
+  # spec.require_paths = ['lib']
 
   # For more information and examples about making a new gem, check out our
   # guide at: https://bundler.io/guides/creating_gem.html

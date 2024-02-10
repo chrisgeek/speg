@@ -1,12 +1,9 @@
 # frozen_string_literal: true
 
-require_relative 'speg/version'
+require 'rails/generators'
 
-module Speg
-  class Error < StandardError; end
-
-  class SpecGenerator < Rails::Generators::Base
-    PATHS = %w[app/models app/controllers].freeze
+ class SpecGenerator < Rails::Generators::Base
+   PATHS = %w[app/models app/controllers].freeze
 
     def create_spec_files
       PATHS.each do |path|
@@ -18,14 +15,18 @@ module Speg
           spec_path.shift
           spec_path << file_name
 
+          # skip if file name is application
           next if file_name.split('_').first == 'application'
 
-          next if File.exist?("lib/spec/#{spec_path.join('/')}")
+          # skip if spec file exists
+          next if File.exist?("spec/#{spec_path.join('/')}")
 
-          create_spec("lib/spec/#{spec_path.join('/')}", klass_name)
+          create_spec("spec/#{spec_path.join('/')}", klass_name)
         end
       end
     end
+
+    private
 
     def create_spec(file_path, klass_name)
       create_file file_path, <<~RUBY
@@ -53,4 +54,3 @@ module Speg
       files
     end
   end
-end
