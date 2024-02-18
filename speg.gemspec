@@ -4,7 +4,7 @@ require_relative 'lib/speg/version'
 
 Gem::Specification.new do |spec|
   spec.name = 'speg'
-  spec.version = Speg::VERSION
+  spec.version = Speg::Version::VERSION
   spec.authors = ['Opara Ifeanyi Christian']
   spec.email = ['chrisgeek29@gmail.com']
   spec.summary = 'Create spec files for Rspec'
@@ -13,8 +13,8 @@ Gem::Specification.new do |spec|
   spec.license = 'MIT'
   spec.required_ruby_version = '>= 2.6.0'
   spec.files       = Dir.glob('{lib,bin,spec}/**/*')
-  # spec.add_dependency 'rails', '~> 7.0'
   spec.add_dependency 'railties', '~> 7.0'
+  spec.add_runtime_dependency "debug", ">= 1.0.0"
   spec.executables = ["speg"]
 
 #   spec.metadata[allowed_push_host'] = 'TODO: Set to your gem server https://example.com'
