@@ -1,3 +1,4 @@
 #!/usr/bin/env ruby
 require 'spec_generator'
-SpecGenerator.new.create_spec_files
+require 'optparse'
+SpecGenerator.new.create_files
