@@ -7,14 +7,13 @@ Gem::Specification.new do |spec|
   spec.version = Speg::Version::VERSION
   spec.authors = ['Opara Ifeanyi Christian']
   spec.email = ['chrisgeek29@gmail.com']
-  spec.summary = 'Create spec files for Rspec'
-  spec.description = 'This gem creates spec files that were not created automatically with rspec, this is especially helpful if you have to generate multiple spec files'
-  # spec.homepage = 'Put your gem website or public repo URL here.'
+  spec.summary = 'Create spec/test files for your test framework'
+  spec.description = 'This gem creates test/spec files that were not created automatically with rspec/minitest, this is especially helpful if you have to generate multiple test files'
+  spec.homepage = 'https://github.com/chrisgeek/speg'
   spec.license = 'MIT'
   spec.required_ruby_version = '>= 2.6.0'
   spec.files       = Dir.glob('{lib,bin,spec}/**/*')
   spec.add_dependency 'railties', '~> 7.0'
-  spec.add_runtime_dependency "debug", ">= 1.0.0"
   spec.executables = ["speg"]
 
 #   spec.metadata[allowed_push_host'] = 'TODO: Set to your gem server https://example.com'

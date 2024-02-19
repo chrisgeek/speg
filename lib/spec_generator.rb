@@ -2,7 +2,6 @@
 
 require 'rails/generators'
 require 'optparse'
-require 'debug'
 
  class SpecGenerator < Rails::Generators::Base
    PATHS = %w[app/models app/controllers app/helpers app/services app/adapters].freeze

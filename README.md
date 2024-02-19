@@ -1,34 +1,47 @@
 # Speg
+Have you tried to add test coverage to an existing codebase? Imagine how tedious it is to manaully create each test/spec file?
+This gem automagically generates and sets up test/spec files, you do not have to spend time creating each file manaully, it reads your file structure and genrates the files accordingly.
 
-TODO: Delete this and the text below, and describe your gem
+## Example
+In the model directory, if a file `models/user.rb` exists, the corresponding spec file will be generated at `spec/models/users_spec.rb` or `test/models/users_test.rb`, depending on whether you are using Rspec or Minitest. It also generates files in controllers, helpers, adapters and services directory.
+Assume you are using Rspec, the `user_spec.rb` file will contain, then you can continue with writing actual tests!
 
-Welcome to your new gem! In this directory, you'll find the files you need to be able to package up your Ruby library into a gem. Put your Ruby code in the file `lib/speg`. To experiment with that code, run `bin/console` for an interactive prompt.
+```
+require 'rails_helper'
+
+RSpec.describe User do
+end
+```
 
 ## Installation
 
-TODO: Replace `UPDATE_WITH_YOUR_GEM_NAME_PRIOR_TO_RELEASE_TO_RUBYGEMS_ORG` with your gem name right after releasing it to RubyGems.org. Please do not do it earlier due to security reasons. Alternatively, replace this section with instructions to install your gem from git if you don't plan to release to RubyGems.org.
+`$ gem install speg`
 
-Install the gem and add to the application's Gemfile by executing:
+OR
 
-    $ bundle add UPDATE_WITH_YOUR_GEM_NAME_PRIOR_TO_RELEASE_TO_RUBYGEMS_ORG
+Add to your Gemfile `gem 'speg'`
 
-If bundler is not being used to manage dependencies, install the gem by executing:
-
-    $ gem install UPDATE_WITH_YOUR_GEM_NAME_PRIOR_TO_RELEASE_TO_RUBYGEMS_ORG
+Run bundle install
 
 ## Usage
 
-TODO: Write usage instructions here
+## For Rspec
+if your test framework is Rspec, ensure you have rspec installed and setup.
 
-## Development
+Run `$ speg --rspec`
 
-After checking out the repo, run `bin/setup` to install dependencies. Then, run `rake spec` to run the tests. You can also run `bin/console` for an interactive prompt that will allow you to experiment.
+The command will generate spec files into your spec directory. 
 
-To install this gem onto your local machine, run `bundle exec rake install`. To release a new version, update the version number in `version.rb`, and then run `bundle exec rake release`, which will create a git tag for the version, push git commits and the created tag, and push the `.gem` file to [rubygems.org](https://rubygems.org).
+## For Minitest
+if your test framework is Minitest, ensure you have minitest setup.
+
+Run `$ speg --minitest`
+
+The command will generate test files into your test directory. 
 
 ## Contributing
 
-Bug reports and pull requests are welcome on GitHub at https://github.com/[USERNAME]/speg. This project is intended to be a safe, welcoming space for collaboration, and contributors are expected to adhere to the [code of conduct](https://github.com/[USERNAME]/speg/blob/main/CODE_OF_CONDUCT.md).
+Bug reports and pull requests are welcome on GitHub at https://github.com/chrisgeek/speg. This project is intended to be a safe, welcoming space for collaboration, and contributors are expected to adhere to the [code of conduct](https://github.com/chrisgeek/speg/blob/main/CODE_OF_CONDUCT.md).
 
 ## License
 
@@ -36,4 +49,4 @@ The gem is available as open source under the terms of the [MIT License](https:/
 
 ## Code of Conduct
 
-Everyone interacting in the Speg project's codebases, issue trackers, chat rooms and mailing lists is expected to follow the [code of conduct](https://github.com/[USERNAME]/speg/blob/main/CODE_OF_CONDUCT.md).
+Everyone interacting in the Speg project's codebases, issue trackers, chat rooms and mailing lists is expected to follow the [code of conduct](https://github.com/chrisgeek/speg/blob/main/CODE_OF_CONDUCT.md).
