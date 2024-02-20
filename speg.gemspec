@@ -21,6 +21,14 @@ Gem::Specification.new do |spec|
 #   spec.metadata['homepage_uri'] = spec.homepage
 #   spec.metadata['source_code_uri'] = 'TODO: Put your gems public repo URL here.'
 #   spec.metadata['changelog_uri'] = 'TODO: Put your gems CHANGELOG.md URL here.'
+  spec.metadata    = {
+    'homepage_uri'      => 'https://github.com/chrisgeek/speg',
+    'documentation_uri' => 'https://rubydoc.info/github/chrisgeek/speg',
+    'changelog_uri'     => 'https://github.com/chrisgeek/speg/blob/main/CHANGELOG.md',
+    'source_code_uri'   => 'https://github.com/chrisgeek/speg',
+    'bug_tracker_uri'   => 'https://github.com/chrisgeek/speg/issues',
+    'wiki_uri'          => 'https://github.com/chrisgeek/speg/wiki'
+    }
 
   # Specify which files should be added to the gem when it is released.
   # The `git ls-files -z` loads the files in the RubyGem that have been added into git.
