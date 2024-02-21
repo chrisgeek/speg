@@ -10,4 +10,10 @@ RSpec.configure do |config|
   config.expect_with :rspec do |c|
     c.syntax = :expect
   end
+
+  config.after(:suite) do
+    # delete dummy test_spec.rb file after test completes
+    file = File.expand_path('spec/lib/models/test_spec.rb')
+    File.delete(file)
+  end
 end
