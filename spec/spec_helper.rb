@@ -13,7 +13,10 @@ RSpec.configure do |config|
 
   config.after(:suite) do
     # delete dummy test_spec.rb file after test completes
+    spec_file = File.expand_path('spec/lib/models/dummy_model_spec.rb')
     file = File.expand_path('spec/lib/models/test_spec.rb')
+
     File.delete(file)
+    File.delete(spec_file)
   end
 end
