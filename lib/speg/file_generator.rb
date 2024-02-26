@@ -35,17 +35,18 @@ module Speg
           file_path.pop
           file_path.shift
           file_path << file_name
+          file = "#{file_suffix}/#{file_path.join('/')}"
 
           # skip if file name is application
           next if file_name.split('_').first == 'application'
 
           # skip if spec file exists
-          next if File.exist?("file_suffix/#{file_path.join('/')}")
+          next if File.exist?(file)
 
           if file_suffix == 'test'
-            minitest_template("#{file_suffix}/#{file_path.join('/')}", klass_name)
+            minitest_template(file, klass_name)
           else
-            rspec_template("#{file_suffix}/#{file_path.join('/')}", klass_name)
+            rspec_template(file, klass_name)
           end
         end
       end

@@ -7,8 +7,6 @@ In the model directory, if a file `models/user.rb` exists, the corresponding spe
 Assume you are using Rspec, the `user_spec.rb` file will contain, then you can continue with writing actual tests!
 
 ```
-require 'rails_helper'
-
 RSpec.describe User do
 end
 ```
