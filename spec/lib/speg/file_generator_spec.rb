@@ -5,18 +5,14 @@ RSpec.describe Speg::FileGenerator do
   let(:path){ ['spec/lib/models'] }
   let(:file_path) { 'spec/lib/models/dummy_model_spec.rb' }
 
-  context 'generate file' do
-    before(:each) do
+  describe 'generate file' do
+    before do
       stub_const('Speg::FileGenerator::PATHS', path)
       described_class.new.generate_test_files('spec') 
     end
 
     it 'generates a spec file' do
       expect(File.exist?('spec/lib/models/test_spec.rb')).to be_truthy
-    end
-
-    xit 'skips existing files' do
-      expect(described_class.new.generate_test_files('spec')).not_to eq file_path
     end
   end
 
@@ -29,6 +25,17 @@ RSpec.describe Speg::FileGenerator do
 
     it 'contains boilerplate code' do
       expect(File.read(file_path)).to include('RSpec.describe DummyModel')
+    end
+  end
+
+  describe '#generate_single_test_file' do
+    before do
+      path = 'spec/lib/models/dummy.rb'
+      described_class.new.generate_single_test_file('test', path)
+    end
+
+    it 'generates single test file' do
+      expect(File.exist?('test/lib/models/dummy_test.rb')).to be_truthy
     end
   end
 end
