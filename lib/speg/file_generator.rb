@@ -32,47 +32,50 @@ module Speg
       @option_parser.parse!
     end
 
-    def generate_single_test_file(test_framework, file_path)
-      path = file_path.split('/')
-      file_name = "#{path.last.split('.').first}_#{test_framework}.rb"
-      klass_name = File.basename(path.last, '.rb').split('_').map(&:humanize).join('')
-      path.pop
-      path.shift
-      path << file_name
-      file = "#{test_framework}/#{path.join('/')}"
+    def generate_single_test_file(test_suit, dir)
+      _file_name, file_path, klass_name = file_data(dir, test_suit)
 
-      if test_framework == 'test'
-        minitest_template(file, klass_name)
-      else
-        rspec_template(file, klass_name)
-      end
+      generate_file(test_suit, file_path, klass_name)
     end
 
-    def generate_test_files(file_suffix)
+    def generate_test_files(test_suit)
       PATHS.each do |path|
         next unless Dir.exist?(path)
 
         file_paths(path).each do |dir|
-          file_path = dir.split('/')
-          file_name = "#{file_path.last.split('.').first}_#{file_suffix}.rb"
-          klass_name = File.basename(file_path.last, '.rb').split('_').map(&:humanize).join('')
-          file_path.pop
-          file_path.shift
-          file_path << file_name
-          file = "#{file_suffix}/#{file_path.join('/')}"
+          file_name, file_path, klass_name = file_data(dir, test_suit)
 
           # skip if file name is application
           next if file_name.split('_').first == 'application'
 
           # skip if spec file exists
-          next if File.exist?(file)
+          next if File.exist?(file_path)
 
-          if file_suffix == 'test'
-            minitest_template(file, klass_name)
-          else
-            rspec_template(file, klass_name)
-          end
+          generate_file(test_suit, file_path, klass_name)
         end
+      end
+    end
+
+    private
+
+    # return file_name, file_path and klass_name
+    def file_data(dir, test_suit)
+      file_path = dir.split('/')
+      file_name = "#{file_path.last.split('.').first}_#{test_suit}.rb"
+      klass_name = File.basename(file_path.last, '.rb').split('_').map(&:humanize).join('')
+      file_path.pop
+      file_path.shift
+      file_path << file_name
+      file = "#{test_suit}/#{file_path.join('/')}"
+
+      [file_name, file, klass_name]
+    end
+
+    def generate_file(test_suit, file, klass_name)
+      if test_suit == 'test'
+        minitest_template(file, klass_name)
+      else
+        rspec_template(file, klass_name)
       end
     end
   end
