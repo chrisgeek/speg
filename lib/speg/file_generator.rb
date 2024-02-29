@@ -16,12 +16,36 @@ module Speg
 
       @option_parser.on('--minitest', 'Generate Minitest files') { generate_test_files('test') }
 
+      @option_parser.on('-sg', '--spec_generate ARGUEMENT', 'generate single spec file') do |file_path|
+        generate_single_test_file('spec', file_path)
+      end
+
+      @option_parser.on('-tg', '--test_generate ARGUEMENT', 'generate single test file') do |file_path|
+        generate_single_test_file('test', file_path)
+      end
+
       if ARGV.empty?
         puts @option_parser.help
         exit
       end
 
       @option_parser.parse!
+    end
+
+    def generate_single_test_file(test_framework, file_path)
+      path = file_path.split('/')
+      file_name = "#{path.last.split('.').first}_#{test_framework}.rb"
+      klass_name = File.basename(path.last, '.rb').split('_').map(&:humanize).join('')
+      path.pop
+      path.shift
+      path << file_name
+      file = "#{test_framework}/#{path.join('/')}"
+
+      if test_framework == 'test'
+        minitest_template(file, klass_name)
+      else
+        rspec_template(file, klass_name)
+      end
     end
 
     def generate_test_files(file_suffix)

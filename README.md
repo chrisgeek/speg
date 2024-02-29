@@ -35,7 +35,20 @@ if your test framework is Minitest, ensure you have minitest setup.
 
 Run `$ speg --minitest`
 
-The command will generate test files into your test directory. 
+The command will generate test files into your test directory.
+
+## Generate single files
+
+##For Rspec
+To generate a single spec file, pass the path of the file you wish to generate a spec for, e.g, to generate an rspec file for `user.rb` model file
+Run `$ speg --spec_generate 'app/models/user.rb'`
+The above code will generate a `user_spec.rb` file in the spec folder.
+
+## For Minitest
+Use the command,  Run
+`$ speg --test_generate 'app/models/user.rb'`
+
+The `user_test.rb` file will be generated and added to the existing test folder (a test folder is created if non exists).
 
 ## Contributing
 

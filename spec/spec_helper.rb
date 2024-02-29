@@ -1,5 +1,5 @@
 # frozen_string_literal: true
-
+require 'fileutils'
 RSpec.configure do |config|
   # Enable flags like --only-failures and --next-failure
   config.example_status_persistence_file_path = ".rspec_status"
@@ -16,7 +16,8 @@ RSpec.configure do |config|
     spec_file = File.expand_path('spec/lib/models/dummy_model_spec.rb')
     file = File.expand_path('spec/lib/models/test_spec.rb')
 
-    File.delete(file)
-    File.delete(spec_file)
+    File.delete(file) if File.exist?(file)
+    File.delete(spec_file) if File.exist?(spec_file)
+    FileUtils.rm_rf('test') if Dir.exists?('test')
   end
 end
