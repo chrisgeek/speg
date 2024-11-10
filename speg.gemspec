@@ -12,9 +12,9 @@ Gem::Specification.new do |spec|
   spec.homepage = 'https://github.com/chrisgeek/speg'
   spec.license = 'MIT'
   spec.required_ruby_version = '>= 2.6.0'
-  spec.files       = Dir.glob('{lib,bin,spec}/**/*')
-  spec.add_dependency 'railties', '~> 7.0'
-  spec.executables = ["speg"]
+  spec.files = Dir.glob('{lib,bin,spec}/**/*')
+  spec.add_dependency 'railties', '~> 8.0'
+  spec.executables = ['speg']
 
 #   spec.metadata[allowed_push_host'] = 'TODO: Set to your gem server https://example.com'
 
