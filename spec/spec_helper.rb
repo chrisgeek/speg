@@ -18,6 +18,6 @@ RSpec.configure do |config|
 
     File.delete(file) if File.exist?(file)
     File.delete(spec_file) if File.exist?(spec_file)
-    FileUtils.rm_rf('test') if Dir.exists?('test')
+    FileUtils.rm_rf('test') if Dir.exist?('test')
   end
 end
